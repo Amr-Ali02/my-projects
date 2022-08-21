@@ -3,71 +3,202 @@
   text-transform: capitalize;
   box-sizing: border-box;
 }
+
 :root {
-  --maincolor: #03a9f4;
-  --secondcolor: #e91e63;
+  --first: #ff5722;
+  --second: #009688;
+  --third: #607d8b;
+  --forth: #fa3664;
+  --fifth: #1692fc;
 }
-.grid {
-  height: 100vh;
-  background-color: #eee;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(20vh, 1fr));
-  gap: 10px 10px;
+h1 {
+  width: 150px;
+  font-family: initial;
+  margin: 30px auto;
+  padding: 10px;
+  text-align: center;
+  color: white;
 }
-.grid div {
+.a1 {
+  background-color: var(--first);
+  position: relative;
+}
+.a1::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  background-color: var(--first);
+  transform: skew(10deg, 10deg);
+  -webkit-transform: skew(10deg, 10deg);
+  -moz-transform: skew(10deg, 10deg);
+  -ms-transform: skew(10deg, 10deg);
+  -o-transform: skew(10deg, 10deg);
+}
+.a1::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  background-color: var(--first);
+  transform: skew(-10deg, -10deg);
+  -webkit-transform: skew(-10deg, -10deg);
+  -moz-transform: skew(-10deg, -10deg);
+  -ms-transform: skew(-10deg, -10deg);
+  -o-transform: skew(-10deg, -10deg);
+}
+
+/* task2 */
+
+.a2 {
+  background-color: var(--second);
+  position: relative;
+}
+.a2::before {
+  content: "";
+  background-color: var(--second);
+  width: 50%;
+  height: 100%;
+  z-index: -1;
+  position: absolute;
+  left: -10px;
+  top: 0;
+  transform: skewX(20deg);
+  -webkit-transform: skewX(20deg);
+  -moz-transform: skewX(20deg);
+  -ms-transform: skewX(20deg);
+  -o-transform: skewX(20deg);
+}
+.a2::after {
+  content: "";
+  background-color: var(--second);
+  width: 10%;
+  height: 100%;
+  z-index: -1;
+  position: absolute;
+  left: -30px;
+  top: 0;
+  transform: skewX(20deg);
+  -webkit-transform: skewX(20deg);
+  -moz-transform: skewX(20deg);
+  -ms-transform: skewX(20deg);
+  -o-transform: skewX(20deg);
+}
+/*  task3
+  .class {
+    matrix(3, 0.2679, 0, 3, 20, 100);
+  }
+  transform:translateX(20) translateY(10) skewX(3) skewY(0.2679) scaleX(3) scaleY(3);
+*/
+
+/* task 4 */
+
+div {
+  padding: 10px;
+  margin: 150px auto;
+  color: white;
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+.a3 {
+  background-color: var(--third);
+  position: relative;
+  border-bottom: 5px solid black;
+}
+.a3::before {
+  content: "Elzero";
+  position: absolute;
+  bottom: 5px;
+  left: 10px;
+}
+.a3::after {
+  content: "";
+  --wid: 136px;
+  width: var(--wid);
+  height: var(--wid);
+  background-color: black;
+  border-right: 5px solid white;
+  border-bottom: 5px solid white;
+  position: absolute;
+  transform-origin: bottom left;
+  left: 0;
+  top: -72%;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+}
+
+/* task 4 */
+
+.a4 {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: 1s transform;
+  -webkit-transition: 1s transform;
+  -moz-transition: 1s transform;
+  -ms-transition: 1s transform;
+  -o-transition: 1s transform;
+}
+.a4::before {
+  content: "Front";
+  background-color: var(--forth);
+  font-size: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
 }
-.element1,
-.element3,
-.element5 {
-  background-color: var(--maincolor);
+.a4::after {
+  content: "Back";
+  background-color: var(--fifth);
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  -webkit-backface-visibility: hidden;
 }
-.element2,
-.element4 {
-  background-color: var(--secondcolor);
+.a4:hover {
+  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
 }
-.grid .element1::before {
-  transition: 0.5s;
-  font-weight: bold;
-  font-size: 150%;
-  content: "كتفمك";
-  color: transparent;
-  -webkit-transition: 0.5s;
-  -moz-transition: 0.5s;
-  -ms-transition: 0.5s;
-  -o-transition: 0.5s;
+.b::after {
+  transform: rotateX(180deg);
+  -webkit-transform: rotateX(180deg);
+  -moz-transform: rotateX(180deg);
+  -ms-transform: rotateX(180deg);
+  -o-transform: rotateX(180deg);
 }
-.grid .element2::before {
-  transition: 0.5s;
-  font-weight: bold;
-  font-size: 150%;
-  content: "foken bitch";
-  color: transparent;
-}
-.grid .element3::before {
-  transition: 0.5s;
-  font-weight: bold;
-  font-size: 150%;
-  content: "حبيبي";
-  color: transparent;
-}
-.grid .element4::before {
-  transition: 0.5s;
-  font-weight: bold;
-  font-size: 150%;
-  content: "كتفم الارهاب";
-  color: transparent;
-}
-.grid .element5::before {
-  transition: 0.5s;
-  font-weight: bold;
-  font-size: 150%;
-  content: "الكسكلايه ضالبوي";
-  color: transparent;
-}
-
-.grid div:hover::before {
-  color: black;
+.b:hover {
+  transform: rotateX(180deg);
+  -webkit-transform: rotateX(180deg);
+  -moz-transform: rotateX(180deg);
+  -ms-transform: rotateX(180deg);
+  -o-transform: rotateX(180deg);
 }
